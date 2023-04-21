@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Webview en Telegram</title>
+  <script>
+    function onMainButtonPressed() {
+      window.Telegram.WebView.receiveEvent('main_button_pressed', null);
+    }
+
+    function onSettingsButtonPressed() {
+      window.Telegram.WebView.receiveEvent('settings_button_pressed', null);
+    }
+
+    function onBackButtonPressed() {
+      window.Telegram.WebView.receiveEvent('back_button_pressed', null);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const mainButton = document.getElementById('mainButton');
+      const settingsButton = document.getElementById('settingsButton');
+      const backButton = document.getElementById('backButton');
+
+      mainButton.addEventListener('click', onMainButtonPressed);
+      settingsButton.addEventListener('click', onSettingsButtonPressed);
+      backButton.addEventListener('click', onBackButtonPressed);
+    });
+  </script>
+</head>
+<body>
+  <iframe src="https://www.google.com" style="width: 100%; height: 100%; border: none;"></iframe>
+  <button id="mainButton">Main Button</button>
+  <button id="settingsButton">Settings Button</button>
+  <button id="backButton">Back Button</button>
+</body>
+</html>
